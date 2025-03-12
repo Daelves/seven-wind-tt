@@ -1,0 +1,38 @@
+@import '../variables';
+
+.sidebar {
+  &__drawer {
+    width: 234px;
+    flex-shrink: 0;
+
+    .MuiDrawer-paper {
+      width: 234px;
+      box-sizing: border-box;
+      background-color: $dark-bg-secondary;
+      border: none;
+      top: 88px;
+      height: calc(100% - 88px);
+    }
+  }
+
+  &__list-item {
+    height: 32px;
+    padding: 0 20px;
+
+    &--active {
+      background-color: $item-active-bg;
+    }
+
+    &:hover {
+      background-color: $item-hover-bg;
+    }
+  }
+
+  &__list-item-text {
+    .MuiListItemText-primary {
+      font-size: 14px;
+      line-height: 16px;
+      color: $white;
+    }
+  }
+}

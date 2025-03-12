@@ -6,15 +6,28 @@ import { useCreateEntityMutation } from './api/entityApi';
 import { useAppDispatch, useAppSelector } from './store/hooks';
 import { setEntityId } from './store/entitySlice';
 import './styles/index.scss';
+import MainLayout from "./components/layout/MainLayout";
 
 const theme = createTheme({
   palette: {
+    mode: 'dark',
     primary: {
       main: '#0073B7',
     },
     secondary: {
       main: '#F5F5F5',
     },
+    background: {
+      default: '#202124',
+      paper: '#27272A',
+    },
+    text: {
+      primary: '#FFFFFF',
+      secondary: '#A1A1AA',
+    },
+  },
+  typography: {
+    fontFamily: 'Roboto, sans-serif',
   },
 });
 
@@ -24,11 +37,16 @@ function App() {
   const [createEntity, { isLoading, isSuccess, data }] = useCreateEntityMutation();
 
   useEffect(() => {
-    // Инициализация entityId только если его еще нет
     if (!entityId) {
-      createEntity();
+      const envEntityId = import.meta.env.VITE_ENTITY_ID;
+      if (envEntityId) {
+        dispatch(setEntityId(envEntityId));
+      } else {
+        console.log('envEntityId не найден')
+        //createEntity();
+      }
     }
-  }, [entityId, createEntity]);
+  }, [entityId, createEntity, dispatch]);
 
   useEffect(() => {
     if (isSuccess && data) {
@@ -37,25 +55,20 @@ function App() {
   }, [isSuccess, data, dispatch]);
 
   return (
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
-      <Router>
-        <div className="app">
-          <header className="app-header">
-            <h1>Строительно-монтажные работы</h1>
-          </header>
-          <main className="app-content">
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <Router>
+          <MainLayout>
             {isLoading ? (
-              <div>Загрузка...</div>
+                <div>Загрузка...</div>
             ) : (
-              <Routes>
-                <Route path="/" element={<div>Главная страница</div>} />
-              </Routes>
+                <Routes>
+                  <Route path="/" element={<div>Главная страница</div>} />
+                </Routes>
             )}
-          </main>
-        </div>
-      </Router>
-    </ThemeProvider>
+          </MainLayout>
+        </Router>
+      </ThemeProvider>
   );
 }
 
