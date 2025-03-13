@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import { useCreateEntityMutation } from './api/entityApi';
@@ -7,6 +7,7 @@ import { useAppDispatch, useAppSelector } from './store/hooks';
 import { setEntityId } from './store/entitySlice';
 import './styles/index.scss';
 import MainLayout from "./components/layout/MainLayout";
+import AppRoutes from "./AppRoutes.tsx";
 
 const theme = createTheme({
   palette: {
@@ -62,9 +63,7 @@ function App() {
             {isLoading ? (
                 <div>Загрузка...</div>
             ) : (
-                <Routes>
-                  <Route path="/" element={<div>Главная страница</div>} />
-                </Routes>
+                <AppRoutes />
             )}
           </MainLayout>
         </Router>

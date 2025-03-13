@@ -5,14 +5,14 @@
     background-color: $dark-bg-secondary;
     box-shadow: none;
     position: relative;
-    height: 88px;
+    height: $header-height;
     display: flex;
     flex-direction: column;
   }
 
   &__topbar {
-    height: 44px;
-    min-height: 44px;
+    height: 44px !important;
+    min-height: 44px !important;
     border-bottom: 1px solid $border-color;
     padding: 0 20px;
     display: flex;
@@ -20,8 +20,8 @@
   }
 
   &__bottombar {
-    height: 44px;
-    min-height: 44px;
+    height: $top-bar-height;
+    min-height: $top-bar-height;
     border-bottom: 1px solid $border-color;
     padding: 0 20px;
     display: flex;
@@ -29,7 +29,7 @@
   }
 
   &__nav-item {
-    font-size: 14px;
+    font-size: $font-size-md;
     line-height: 16px;
     color: $text-secondary;
     cursor: pointer;
@@ -52,7 +52,7 @@
   }
 
   &__project-title {
-    font-size: 18px;
+    font-size: $font-size-lg;
     line-height: 21px;
     color: $white;
     margin-left: 10px;
@@ -65,14 +65,20 @@
   }
 
   &__project-name {
-    font-size: 14px;
+    font-size: $font-size-md;
     line-height: 16px;
     color: $text-secondary;
   }
 
   &__project-abbr {
-    font-size: 10px;
+    font-size: $font-size-xs;
     line-height: 12px;
     color: $text-secondary;
+  }
+
+  &__icon-container {
+    margin-right: 20px;
+    display: flex;
+    align-items: center;
   }
 }

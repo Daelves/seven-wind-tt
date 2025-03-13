@@ -2,16 +2,16 @@
 
 .sidebar {
   &__drawer {
-    width: 234px;
+    width: $sidebar-width;
     flex-shrink: 0;
 
     .MuiDrawer-paper {
-      width: 234px;
+      width: $sidebar-width;
       box-sizing: border-box;
       background-color: $dark-bg-secondary;
       border: none;
-      top: 88px;
-      height: calc(100% - 88px);
+      top: $header-height;
+      height: calc(100% - #{$header-height});
     }
   }
 
@@ -30,9 +30,14 @@
 
   &__list-item-text {
     .MuiListItemText-primary {
-      font-size: 14px;
+      font-size: $font-size-md;
       line-height: 16px;
       color: $white;
     }
+  }
+
+  &__icon {
+    min-width: 30px;
+    color: $white;
   }
 }

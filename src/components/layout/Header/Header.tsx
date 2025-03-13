@@ -2,6 +2,32 @@ import React from 'react';
 import { styled } from '@mui/material/styles';
 import { AppBar, Toolbar, Typography, Box } from '@mui/material';
 
+const MenuIcon = () => (
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g clipPath="url(#clip0_3_4483)">
+            <path d="M4 8H8V4H4V8ZM10 20H14V16H10V20ZM4 20H8V16H4V20ZM4 14H8V10H4V14ZM10 14H14V10H10V14ZM16 4V8H20V4H16ZM10 8H14V4H10V8ZM16 14H20V10H16V14ZM16 20H20V16H16V20Z" fill="#A1A1AA"/>
+        </g>
+        <defs>
+            <clipPath id="clip0_3_4483">
+                <rect width="24" height="24" fill="white"/>
+            </clipPath>
+        </defs>
+    </svg>
+);
+
+const BackIcon = () => (
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g clipPath="url(#clip0_3_4484)">
+            <path d="M10 9V5L3 12L10 19V14.9C15 14.9 18.5 16.5 21 20C20 15 17 10 10 9Z" fill="#A1A1AA"/>
+        </g>
+        <defs>
+            <clipPath id="clip0_3_4484">
+                <rect width="24" height="24" fill="white"/>
+            </clipPath>
+        </defs>
+    </svg>
+);
+
 const StyledAppBar = styled(AppBar)(({ theme }) => ({
     backgroundColor: '#27272A',
     boxShadow: 'none',
@@ -73,17 +99,23 @@ const ProjectAbbr = styled(Typography)({
     color: '#A1A1AA',
 });
 
+const IconContainer = styled(Box)({
+    marginRight: '20px',
+    display: 'flex',
+    alignItems: 'center',
+});
+
 const Header: React.FC = () => {
     return (
         <StyledAppBar position="static">
             <TopBar>
                 <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                    <Box sx={{ width: '24px', height: '24px', marginRight: '20px' }}>
-                        {/* Иконка меню */}
-                    </Box>
-                    <Box sx={{ width: '24px', height: '24px', marginRight: '35px' }}>
-                        {/* Иконка дома */}
-                    </Box>
+                    <IconContainer>
+                        <MenuIcon />
+                    </IconContainer>
+                    <IconContainer>
+                        <BackIcon />
+                    </IconContainer>
                     <NavItem active>Просмотр</NavItem>
                     <NavItem>Управление</NavItem>
                 </Box>
